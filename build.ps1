@@ -33,7 +33,7 @@ $LIB_DIR = "lib"
 $RECORDINGS_DIR = "recordings"
 
 # Main class
-$MAIN_CLASS = "com.template.Main"
+$MAIN_CLASS = "com.develop.Main"
 
 # JFR settings
 $JFR_DURATION = "60s"

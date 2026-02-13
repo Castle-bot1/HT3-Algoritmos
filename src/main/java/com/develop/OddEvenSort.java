@@ -34,7 +34,7 @@ public class OddEvenSort {
             // Fase par: comparar elementos en índices pares con sus sucesores
             for (int i = 0; i < arr.length - 1; i += 2) {
                 if (arr[i].compareTo(arr[i + 1]) > 0) {
-                    T temp = arr[i];
+                	T temp = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = temp;
                     sorted = false;
