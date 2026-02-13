@@ -1,219 +1,68 @@
-# Java Template
+# Comparador de Algoritmos de Ordenamiento
 
-## Project Structure
+Este proyecto implementa diferentes algoritmos de ordenamiento en Java.
 
-```
-java-template/
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── com/template/
-│   │           └── Main.java
-│   └── test/
-│       └── java/
-│           └── com/template/
-│               └── MainTest.java
-├── lib/                    # JUnit JAR for testing
-├── out/
-│   ├── main/              # Compiled main classes
-│   └── test/              # Compiled test classes
-├── recordings/            # JFR recordings output
-├── Makefile               # Build script for Linux/macOS
-├── build.bat              # Build script for Windows (Batch)
-├── build.ps1              # Build script for Windows (PowerShell)
-└── README.md
-```
+## Algoritmos Implementados
 
-## Requirements
+1. **Gnome Sort** - O(n²) - Algoritmo simple que funciona como un gnomo ordenando macetas
+2. **Merge Sort** - O(n log n) - Divide y conquista, muy eficiente
+3. **Quick Sort** - O(n log n) promedio - Uno de los más rápidos en la práctica
+4. **Radix Sort** - O(d(n+k)) - Excelente para números enteros
+5. **Odd-Even Sort** - O(n²) - Ordena comparando parejas de elementos
 
-- **JDK 25** (OpenJDK 25.0.2 or compatible)
-- **Build tool:**
-  - **Linux/macOS:** Make
-  - **Windows:** Batch (build.bat) or PowerShell (build.ps1)
+## Archivos del Proyecto
 
-## Setup
+- `Comparable.java` - Interfaz para estructuras de datos comparables
+- `GnomeSort.java` - Implementación de Gnome Sort
+- `MergeSort.java` - Implementación de Merge Sort
+- `QuickSort.java` - Implementación de Quick Sort
+- `RadixSort.java` - Implementación de Radix Sort
+- `OddEvenSort.java` - Implementación de Odd-Even Sort
+- `FileGenerator.java` - Utilidad para generar y leer archivos
+- `Main.java` - Programa principal con menú interactivo
 
-### 1. Verify JDK Installation
+## Compilación
 
-The build scripts expect JDK 25 to be available. They will use:
-- `JAVA_HOME` environment variable if set
-- Otherwise, will attempt to find Java in your system PATH
-
-To verify your JDK version:
 ```bash
-java --version
+javac *.java
 ```
 
-### 2. Set JAVA_HOME (Optional but Recommended)
+## Ejecución
 
-**Linux/macOS:**
 ```bash
-export JAVA_HOME=/path/to/jdk-25
+java Main
 ```
 
-**Windows (Command Prompt):**
-```cmd
-set JAVA_HOME=C:\Path\To\jdk-25
-```
+El programa muestra un menú interactivo con las siguientes opciones:
+1. Generar archivo con números aleatorios
+2. Ordenar con un algoritmo específico
+3. Cambiar archivo de trabajo
+4. Salir
 
-**Windows (PowerShell):**
-```powershell
-$env:JAVA_HOME = "C:\Path\To\jdk-25"
-```
+## Uso para el Proyecto
 
-## Usage
+### Generar Archivo de Números
+El programa puede generar archivos con hasta 3000 números aleatorios.
 
-Choose the appropriate build script for your operating system:
+### Ordenar con Algoritmos
+Cada algoritmo puede ser ejecutado independientemente para ordenar los números del archivo.
 
-### Linux/macOS (Makefile)
+### Medición de Tiempos
+Los tiempos de ejecución se miden externamente con tu propio método/profiler en bash.
 
-#### Compile the Project
-```bash
-make compile
-```
+## Características
 
-#### Run the Application
-```bash
-make run
-```
+- ✓ Programa único y simple de usar
+- ✓ Menú interactivo en terminal
+- ✓ Manejo de archivos para entrada/salida de datos
+- ✓ Verificación automática de ordenamiento correcto
+- ✓ Soporte para números positivos y negativos
+- ✓ Implementaciones optimizadas de cada algoritmo
+- ✓ Interfaz Comparable para estructuras de datos personalizadas
 
-#### Compile Tests
-```bash
-make compile-test
-```
+## Notas
 
-#### Run Tests
-```bash
-make test
-```
-
-#### Profile with Java Flight Recorder
-```bash
-make profile
-```
-
-#### Clean Build Artifacts
-```bash
-make clean
-```
-
-#### Help
-```bash
-make help
-```
-
----
-
-### Windows (Batch Script)
-
-#### Compile the Project
-```cmd
-build.bat compile
-```
-
-#### Run the Application
-```cmd
-build.bat run
-```
-
-#### Compile Tests
-```cmd
-build.bat compile-test
-```
-
-#### Run Tests
-```cmd
-build.bat test
-```
-
-#### Profile with Java Flight Recorder
-```cmd
-build.bat profile
-```
-
-#### Clean Build Artifacts
-```cmd
-build.bat clean
-```
-
-#### Help
-```cmd
-build.bat help
-```
-
----
-
-### Windows (PowerShell Script)
-
-#### Compile the Project
-```powershell
-.\build.ps1 compile
-```
-
-#### Run the Application
-```powershell
-.\build.ps1 run
-```
-
-#### Compile Tests
-```powershell
-.\build.ps1 compile-test
-```
-
-#### Run Tests
-```powershell
-.\build.ps1 test
-```
-
-#### Profile with Java Flight Recorder
-```powershell
-.\build.ps1 profile
-```
-
-#### Clean Build Artifacts
-```powershell
-.\build.ps1 clean
-```
-
-#### Help
-```powershell
-.\build.ps1 help
-```
-
----
-
-## Features
-
-### Compile
-Compiles all Java sources in `src/main/java/` to `out/main/`.
-
-### Run
-Compiles (if needed) and runs the main application.
-
-### Compile Tests
-Compiles test sources. Requires JUnit JAR in `lib/` directory.
-
-### Run Tests
-Compiles and runs all JUnit tests.
-
-### Profile with Java Flight Recorder
-Runs the application with JFR profiling enabled. The recording will be saved to `recordings/` directory with a timestamp.
-
-**JFR Configuration:**
-- Duration: 60 seconds (configurable)
-- Settings: `profile` (higher overhead, more detailed profiling)
-- Output: Timestamped `.jfr` files in `recordings/`
-
-### Clean
-Removes all compiled classes and JFR recordings.
-
-## Notes for Windows Users
-
-- **PowerShell Execution Policy:** If you encounter an error running `build.ps1`, you may need to adjust your execution policy:
-  ```powershell
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-  ```
-
-- **Path Separators:** The Windows scripts automatically handle Windows path separators (`\`) and classpath separators (`;`).
-
-- **WSL Alternative:** If you prefer, you can use Windows Subsystem for Linux (WSL) and run the Makefile directly.
+- Radix Sort funciona mejor con números enteros
+- Para arreglos muy grandes (>1000 elementos), Quick Sort y Merge Sort suelen ser los más rápidos
+- Gnome Sort y Odd-Even Sort son más lentos pero más simples de entender
+- La medición de tiempos debe hacerse externamente con tu propio profiler
